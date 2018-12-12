@@ -13,5 +13,6 @@ Tutores: Gustavo Lins e Anselmo Gomes
 
 - Hibernate
 - Jersey
-
+- Tomcat 7
+- Java 8
 
