@@ -1,62 +1,64 @@
 package local.henrique.controller;
 
-import local.henrique.dao.UsuarioDAO;
-import local.henrique.model.Perfil;
-import local.henrique.model.Usuario;
-import local.henrique.util.*;
-
 import java.util.List;
 
-import org.hibernate.*;
+import org.hibernate.Query;
+import org.hibernate.Session;
 
-public class UsuarioController implements UsuarioDAO{
+import local.henrique.dao.EmpresaDAO;
+import local.henrique.model.Empresa;
+import local.henrique.model.Perfil;
+import local.henrique.util.HibernateUtil;
+
+public class EmpresaController implements EmpresaDAO{
 	
-	public boolean incluir(Usuario usuario) {
+	public boolean incluir(Empresa o) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		  
         session.beginTransaction();
-        session.save(usuario);
+        session.save(o);
+        session.getTransaction().commit();
 		return true;		
 	}
 	
-	public List<Usuario> listaUsuarios(){
+	public List<Empresa> lista(){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		  
         session.beginTransaction();
         
-        Query q = session.createQuery("From Usuario ");
+        Query q = session.createQuery("From Empresa ");
         
-        List<Usuario> resultList = q.list();
+        List<Empresa> resultList = q.list();
         
 		return resultList;
 		
 	}
 	
-	public boolean alterar(Usuario usuario) {
+	public boolean alterar(Empresa o) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		  
         session.beginTransaction();
-        session.update(usuario);
+        session.update(o);
         session.getTransaction().commit();
 		return true;		
 	}
 	
-	public Usuario listaUsuario(long id) {
+	public Empresa recebe(long id) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		
-		Usuario usuario = (Usuario) session.load(Usuario.class, new Long(id));
+		Empresa o = (Empresa) session.load(Empresa.class, new Long(id));
 		
-		return usuario;
+		return o;
 		
 	}
-
+	
 	public boolean remover(long id) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		
-		Usuario usuario = (Usuario) session.load(Usuario.class, new Long(id));
+		Empresa o = (Empresa) session.load(Empresa.class, new Long(id));
 		
-		if(null != usuario){
-			session.delete(usuario);
+		if(null != o){
+			session.delete(o);
 			session.beginTransaction().commit();
 		}
 
