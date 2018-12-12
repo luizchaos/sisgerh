@@ -20,6 +20,7 @@
  
      <mapping class="local.henrique.model.Perfil" />
      <mapping class="local.henrique.model.Usuario" />
+     <mapping class="local.henrique.model.Empresa" />
  
 </session-factory>
 </hibernate-configuration>
