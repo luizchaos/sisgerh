@@ -4,7 +4,6 @@ import local.henrique.dao.PerfilDAO;
 import local.henrique.model.Perfil;
 import local.henrique.util.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.*;
@@ -20,6 +19,7 @@ public class PerfilController implements PerfilDAO{
 		return true;		
 	}
 	
+	@SuppressWarnings({ "unchecked", "rawtypes", "deprecation" })
 	public List<Perfil> listaPerfis(){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		  

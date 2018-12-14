@@ -1,7 +1,6 @@
 package local.henrique.controller;
 
 import local.henrique.dao.UsuarioDAO;
-import local.henrique.model.Perfil;
 import local.henrique.model.Usuario;
 import local.henrique.util.*;
 
@@ -19,6 +18,7 @@ public class UsuarioController implements UsuarioDAO{
 		return true;		
 	}
 	
+	@SuppressWarnings({ "unchecked", "rawtypes", "deprecation" })
 	public List<Usuario> listaUsuarios(){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		  

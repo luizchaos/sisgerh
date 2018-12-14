@@ -7,9 +7,9 @@ import org.hibernate.Session;
 
 import local.henrique.dao.EmpresaDAO;
 import local.henrique.model.Empresa;
-import local.henrique.model.Perfil;
 import local.henrique.util.HibernateUtil;
 
+@SuppressWarnings("deprecation")
 public class EmpresaController implements EmpresaDAO{
 	
 	public boolean incluir(Empresa o) {
@@ -21,6 +21,7 @@ public class EmpresaController implements EmpresaDAO{
 		return true;		
 	}
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public List<Empresa> lista(){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		  

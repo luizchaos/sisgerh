@@ -4,9 +4,7 @@ import javax.annotation.PostConstruct;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
-import local.henrique.controller.PerfilController;
 import local.henrique.controller.UsuarioController;
-import local.henrique.model.Perfil;
 import local.henrique.model.Usuario;
 
 import java.util.*;

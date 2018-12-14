@@ -6,6 +6,7 @@ import javax.persistence.*;
 @Table
 public class FuncionarioTerceirizado extends Funcionario{
 	
-	
+	@ManyToOne
+	private Contrato contrato;
 
 }

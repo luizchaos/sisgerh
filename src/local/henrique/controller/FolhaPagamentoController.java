@@ -1,18 +1,18 @@
 package local.henrique.controller;
 
-import local.henrique.dao.FuncionarioDAO;
-import local.henrique.model.Funcionario;
-import local.henrique.util.HibernateUtil;
-
 import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import local.henrique.dao.FolhaPagamentoDAO;
+import local.henrique.model.FolhaPagamento;
+import local.henrique.util.HibernateUtil;
+
 @SuppressWarnings("deprecation")
-public class FuncionarioController implements FuncionarioDAO{
+public class FolhaPagamentoController implements FolhaPagamentoDAO{
 	
-	public boolean incluir(Funcionario o) {
+	public boolean incluir(FolhaPagamento o) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		  
         session.beginTransaction();
@@ -22,20 +22,20 @@ public class FuncionarioController implements FuncionarioDAO{
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public List<Funcionario> lista(){
+	public List<FolhaPagamento> lista(){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		  
         session.beginTransaction();
         
-        Query q = session.createQuery("From Funcionario ");
+        Query q = session.createQuery("From FolhaPagamento ");
         
-        List<Funcionario> resultList = q.list();
+        List<FolhaPagamento> resultList = q.list();
         
 		return resultList;
 		
 	}
 	
-	public boolean alterar(Funcionario o) {
+	public boolean alterar(FolhaPagamento o) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		  
         session.beginTransaction();
@@ -44,10 +44,10 @@ public class FuncionarioController implements FuncionarioDAO{
 		return true;		
 	}
 	
-	public Funcionario recebe(long id) {
+	public FolhaPagamento recebe(long id) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		
-		Funcionario o = (Funcionario) session.load(Funcionario.class, new Long(id));
+		FolhaPagamento o = (FolhaPagamento) session.load(FolhaPagamento.class, new Long(id));
 		
 		return o;
 		
@@ -56,7 +56,7 @@ public class FuncionarioController implements FuncionarioDAO{
 	public boolean remover(long id) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		
-		Funcionario o = (Funcionario) session.load(Funcionario.class, new Long(id));
+		FolhaPagamento o = (FolhaPagamento) session.load(FolhaPagamento.class, new Long(id));
 		
 		if(null != o){
 			session.delete(o);
@@ -66,4 +66,5 @@ public class FuncionarioController implements FuncionarioDAO{
 		return true;
 		
 	}
+
 }

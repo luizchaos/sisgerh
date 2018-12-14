@@ -5,9 +5,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 import local.henrique.controller.EmpresaController;
-import local.henrique.controller.PerfilController;
 import local.henrique.model.Empresa;
-import local.henrique.model.Perfil;
 
 import java.util.*;
 

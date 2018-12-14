@@ -6,9 +6,9 @@ import local.henrique.model.Empresa;
 
 public interface EmpresaDAO {
 	
-	public boolean incluir(Empresa empresa);
+	public boolean incluir(Empresa o);
 	public List<Empresa> lista();
-	public boolean alterar(Empresa empresa);
+	public boolean alterar(Empresa o);
 	public Empresa recebe(long id);
 	public boolean remover(long id);
 }

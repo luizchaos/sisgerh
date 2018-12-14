@@ -4,28 +4,28 @@ import javax.annotation.PostConstruct;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
-import local.henrique.controller.FeriasController;
-import local.henrique.model.Ferias;
+import local.henrique.controller.FolhaPagamentoController;
+import local.henrique.model.FolhaPagamento;
 
 import java.util.*;
 
-@Path("/ferias")
-public class FeriasView {
+@Path("/folhapagamento")
+public class FolhaPagamentoView {
 	
-private static final String CHARSET_UTF8 = ";charset=utf-8";
+	private static final String CHARSET_UTF8 = ";charset=utf-8";
 	
-	private FeriasController controller;
+	private FolhaPagamentoController controller;
 	
 	@PostConstruct
 	private void init() {
-		controller =  new FeriasController();
+		controller =  new FolhaPagamentoController();
 	}
 	
 	@GET
 	@Path("/list")
 	@Produces(MediaType.APPLICATION_JSON+CHARSET_UTF8)
-	public List<Ferias> lista(){
-		List<Ferias> lista =  null;
+	public List<FolhaPagamento> lista(){
+		List<FolhaPagamento> lista =  null;
 		
 		try {
 			lista = controller.lista();
@@ -40,17 +40,17 @@ private static final String CHARSET_UTF8 = ";charset=utf-8";
 	@Path("/add")
 	@Consumes(MediaType.APPLICATION_JSON+CHARSET_UTF8)
 	@Produces(MediaType.TEXT_PLAIN+CHARSET_UTF8)
-	public String inclui(Ferias o) {
+	public String inclui(FolhaPagamento o) {
 		String msg = "";
 		
 		try {
 			controller.incluir(o);
 			
-			msg = "Ferias adicionada com sucesso";
+			msg = "Folha de Pagamento adicionada com sucesso";
 		}catch(Exception e) {
 			e.printStackTrace();
 			
-			msg = "Ferias nao adicionada";
+			msg = "Folha de Pagamento nao adicionada";
 		}
 		
 		return msg;
@@ -60,17 +60,17 @@ private static final String CHARSET_UTF8 = ";charset=utf-8";
 	@Path("/edit/")
 	@Consumes(MediaType.APPLICATION_JSON+CHARSET_UTF8)
 	@Produces(MediaType.TEXT_PLAIN+CHARSET_UTF8)
-	public String altera(Ferias o) {
+	public String altera(FolhaPagamento o) {
 		String msg = "";
 		
 		try {
 			controller.alterar(o);
 			
-			msg = "Ferias alterada com sucesso";
+			msg = "Folha de Pagamento alterada com sucesso";
 		}catch(Exception e) {
 			e.printStackTrace();
 			
-			msg = "Ferias nao alterada";
+			msg = "Folha de Pagamento nao alterada";
 		}
 		
 		return msg;
@@ -79,8 +79,8 @@ private static final String CHARSET_UTF8 = ";charset=utf-8";
 	@GET
 	@Path("/get/{id}")
 	@Produces(MediaType.APPLICATION_JSON+CHARSET_UTF8)
-	public Ferias recebe(@PathParam("id") int id) {
-		Ferias o = null;
+	public FolhaPagamento recebe(@PathParam("id") int id) {
+		FolhaPagamento o = null;
 		try {
 			o = controller.recebe(id);
 		}catch(Exception e) {
@@ -98,11 +98,11 @@ private static final String CHARSET_UTF8 = ";charset=utf-8";
 		try {
 			controller.remover(id);
 			
-			msg = "Ferias removida com sucesso";
+			msg = "Folha de Pagamento removida com sucesso";
 		}catch(Exception e) {
 			e.printStackTrace();
 			
-			msg = "Ferias nao removida";
+			msg = "Folha de Pagamento nao removida";
 		}
 		
 		return msg;

@@ -4,9 +4,7 @@ import javax.annotation.PostConstruct;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
-import local.henrique.controller.EmpresaController;
 import local.henrique.controller.FuncionarioController;
-import local.henrique.model.Empresa;
 import local.henrique.model.Funcionario;
 
 import java.util.*;
@@ -14,7 +12,7 @@ import java.util.*;
 @Path("/funcionario")
 public class FuncionarioView {
 	
-private static final String CHARSET_UTF8 = ";charset=utf-8";
+	private static final String CHARSET_UTF8 = ";charset=utf-8";
 	
 	private FuncionarioController controller;
 	
@@ -52,7 +50,7 @@ private static final String CHARSET_UTF8 = ";charset=utf-8";
 		}catch(Exception e) {
 			e.printStackTrace();
 			
-			msg = "Funcionario nao adicionada";
+			msg = "Funcionario nao adicionado";
 		}
 		
 		return msg;
@@ -100,11 +98,11 @@ private static final String CHARSET_UTF8 = ";charset=utf-8";
 		try {
 			controller.remover(id);
 			
-			msg = "Funcionario removida com sucesso";
+			msg = "Funcionario removido com sucesso";
 		}catch(Exception e) {
 			e.printStackTrace();
 			
-			msg = "Funcionario nao removida";
+			msg = "Funcionario nao removido";
 		}
 		
 		return msg;

@@ -6,9 +6,9 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import local.henrique.util.HibernateUtil;
 import local.henrique.dao.FeriasDAO;
-import local.henrique.model.Empresa;
 import local.henrique.model.Ferias;
 
+@SuppressWarnings("deprecation")
 public class FeriasController implements FeriasDAO{
 	
 	public boolean incluir(Ferias o) {
@@ -20,6 +20,7 @@ public class FeriasController implements FeriasDAO{
 		return true;		
 	}
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public List<Ferias> lista(){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		  

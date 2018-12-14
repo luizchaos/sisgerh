@@ -4,28 +4,28 @@ import javax.annotation.PostConstruct;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
-import local.henrique.controller.FeriasController;
-import local.henrique.model.Ferias;
+import local.henrique.controller.EmpresaTerceirizadaController;
+import local.henrique.model.EmpresaTerceirizada;
 
 import java.util.*;
 
-@Path("/ferias")
-public class FeriasView {
+@Path("/empresaterceirizada")
+public class EmpresaTerceirizadaView {
 	
-private static final String CHARSET_UTF8 = ";charset=utf-8";
+	private static final String CHARSET_UTF8 = ";charset=utf-8";
 	
-	private FeriasController controller;
+	private EmpresaTerceirizadaController controller;
 	
 	@PostConstruct
 	private void init() {
-		controller =  new FeriasController();
+		controller =  new EmpresaTerceirizadaController();
 	}
 	
 	@GET
 	@Path("/list")
 	@Produces(MediaType.APPLICATION_JSON+CHARSET_UTF8)
-	public List<Ferias> lista(){
-		List<Ferias> lista =  null;
+	public List<EmpresaTerceirizada> lista(){
+		List<EmpresaTerceirizada> lista =  null;
 		
 		try {
 			lista = controller.lista();
@@ -40,17 +40,17 @@ private static final String CHARSET_UTF8 = ";charset=utf-8";
 	@Path("/add")
 	@Consumes(MediaType.APPLICATION_JSON+CHARSET_UTF8)
 	@Produces(MediaType.TEXT_PLAIN+CHARSET_UTF8)
-	public String inclui(Ferias o) {
+	public String inclui(EmpresaTerceirizada o) {
 		String msg = "";
 		
 		try {
 			controller.incluir(o);
 			
-			msg = "Ferias adicionada com sucesso";
+			msg = "Empresa Terceirizada adicionada com sucesso";
 		}catch(Exception e) {
 			e.printStackTrace();
 			
-			msg = "Ferias nao adicionada";
+			msg = "Empresa Terceirizada nao adicionada";
 		}
 		
 		return msg;
@@ -60,17 +60,17 @@ private static final String CHARSET_UTF8 = ";charset=utf-8";
 	@Path("/edit/")
 	@Consumes(MediaType.APPLICATION_JSON+CHARSET_UTF8)
 	@Produces(MediaType.TEXT_PLAIN+CHARSET_UTF8)
-	public String altera(Ferias o) {
+	public String altera(EmpresaTerceirizada o) {
 		String msg = "";
 		
 		try {
 			controller.alterar(o);
 			
-			msg = "Ferias alterada com sucesso";
+			msg = "Empresa Terceirizada alterada com sucesso";
 		}catch(Exception e) {
 			e.printStackTrace();
 			
-			msg = "Ferias nao alterada";
+			msg = "Empresa Terceirizada nao alterada";
 		}
 		
 		return msg;
@@ -79,8 +79,8 @@ private static final String CHARSET_UTF8 = ";charset=utf-8";
 	@GET
 	@Path("/get/{id}")
 	@Produces(MediaType.APPLICATION_JSON+CHARSET_UTF8)
-	public Ferias recebe(@PathParam("id") int id) {
-		Ferias o = null;
+	public EmpresaTerceirizada recebe(@PathParam("id") int id) {
+		EmpresaTerceirizada o = null;
 		try {
 			o = controller.recebe(id);
 		}catch(Exception e) {
@@ -98,14 +98,15 @@ private static final String CHARSET_UTF8 = ";charset=utf-8";
 		try {
 			controller.remover(id);
 			
-			msg = "Ferias removida com sucesso";
+			msg = "Empresa Terceirizada removida com sucesso";
 		}catch(Exception e) {
 			e.printStackTrace();
 			
-			msg = "Ferias nao removida";
+			msg = "Empresa Terceirizada nao removida";
 		}
 		
 		return msg;
 		
 	}
+
 }
