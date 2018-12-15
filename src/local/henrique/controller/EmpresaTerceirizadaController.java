@@ -6,6 +6,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import local.henrique.dao.EmpresaTerceirizadaDAO;
+import local.henrique.model.Contrato;
 import local.henrique.model.EmpresaTerceirizada;
 import local.henrique.util.HibernateUtil;
 
@@ -64,6 +65,20 @@ public class EmpresaTerceirizadaController implements EmpresaTerceirizadaDAO{
 		}
 
 		return true;
+		
+	}
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public List<Contrato> retornaContratos(long id){
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		  
+        session.beginTransaction();
+        
+        Query q = session.createQuery("From Contrato Where 	empresa_terceirizada_id = :id ").setParameter("id", id);
+        
+        List<Contrato> resultList = q.list();
+        
+		return resultList;
 		
 	}
 

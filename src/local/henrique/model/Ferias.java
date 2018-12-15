@@ -4,13 +4,25 @@ import java.util.Date;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.GenericGenerator;
+
 
 @Entity
 @Table
 public class Ferias {
 	
 	@Id
-    @GeneratedValue
+	@GenericGenerator(
+	        name = "sequence", 
+	        strategy = "sequence", 
+	        parameters = {
+	            @org.hibernate.annotations.Parameter(
+	                name = "sequence", 
+	                value = "sequence"
+	            )
+	 
+	    })
+	@GeneratedValue(generator = "sequence")
     private Long id;
 	
 	@ManyToOne

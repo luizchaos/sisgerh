@@ -1,11 +1,23 @@
 package local.henrique.model;
 import javax.persistence.*;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 @Table
 public class Usuario {
 	@Id
-    @GeneratedValue
+	@GenericGenerator(
+	        name = "sequence", 
+	        strategy = "sequence", 
+	        parameters = {
+	            @org.hibernate.annotations.Parameter(
+	                name = "sequence", 
+	                value = "sequence"
+	            )
+	 
+	    })
+	@GeneratedValue(generator = "sequence")
     private Long id;
 	
 	private String login;

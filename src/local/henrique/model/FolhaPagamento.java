@@ -4,12 +4,24 @@ import java.util.Date;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 @Table
 public class FolhaPagamento {
 	
 	@Id
-    @GeneratedValue
+	@GenericGenerator(
+	        name = "sequence", 
+	        strategy = "sequence", 
+	        parameters = {
+	            @org.hibernate.annotations.Parameter(
+	                name = "sequence", 
+	                value = "sequence"
+	            )
+	 
+	    })
+	@GeneratedValue(generator = "sequence")
     private Long id;
 	
 	private Double valor;
@@ -73,7 +85,5 @@ public class FolhaPagamento {
 	public void setData_criacao(Date data_criacao) {
 		this.data_criacao = data_criacao;
 	}
-	
-	
 
 }

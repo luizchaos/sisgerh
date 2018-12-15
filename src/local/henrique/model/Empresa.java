@@ -2,12 +2,24 @@ package local.henrique.model;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Empresa {
 	
 	@Id
-    @GeneratedValue
+	@GenericGenerator(
+	        name = "sequence", 
+	        strategy = "sequence", 
+	        parameters = {
+	            @org.hibernate.annotations.Parameter(
+	                name = "sequence", 
+	                value = "sequence"
+	            )
+	 
+	    })
+	@GeneratedValue(generator = "sequence")
     private Long id;
 	
 	private String nome;

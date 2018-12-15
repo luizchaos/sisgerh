@@ -15,6 +15,7 @@ public class UsuarioController implements UsuarioDAO{
 		  
         session.beginTransaction();
         session.save(usuario);
+        session.getTransaction().commit();
 		return true;		
 	}
 	

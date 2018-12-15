@@ -5,6 +5,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 import local.henrique.controller.EmpresaTerceirizadaController;
+import local.henrique.model.Contrato;
 import local.henrique.model.EmpresaTerceirizada;
 
 import java.util.*;
@@ -107,6 +108,19 @@ public class EmpresaTerceirizadaView {
 		
 		return msg;
 		
+	}
+	
+	@GET
+	@Path("/retornacontratos/{id}")
+	@Produces(MediaType.APPLICATION_JSON+CHARSET_UTF8)
+	public List<Contrato> retornaContratos(@PathParam("id") int id) {
+		List<Contrato> o = null;
+		try {
+			o = controller.retornaContratos(id);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return o;
 	}
 
 }

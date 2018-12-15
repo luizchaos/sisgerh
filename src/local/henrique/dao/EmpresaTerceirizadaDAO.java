@@ -2,6 +2,7 @@ package local.henrique.dao;
 
 import java.util.List;
 
+import local.henrique.model.Contrato;
 import local.henrique.model.EmpresaTerceirizada;
 
 public interface EmpresaTerceirizadaDAO {
@@ -11,5 +12,6 @@ public interface EmpresaTerceirizadaDAO {
 	public boolean alterar(EmpresaTerceirizada o);
 	public EmpresaTerceirizada recebe(long id);
 	public boolean remover(long id);
-
+	
+	public List<Contrato> retornaContratos(long id);
 }
